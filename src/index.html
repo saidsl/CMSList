@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <title>The CMSList</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <script src="./src/tempo.min.js"></script>
+    <script>
+      var data = [
+        {
+          'parent': 'brangelina', 'join': {
+            'children': [
+              { 'name': 'roxy', 'boy': false },
+              { 'name': 'foxy', 'boy': true },
+              { 'name': 'doxy', 'boy': true },
+              { 'name': 'moxy', 'boy': false }
+            ]
+          }
+        },
+        { 'parent': 'chuck norris' }
+      ];
+      window.onload = function () {
+        Tempo.prepare('just-children').render(data[0].join.children);
+        Tempo.prepare('list').errors(function () { console.log(err) }).render(data);
+      }
+    </script>
+  </head>
+
+  <body>
+    <div class="min-h-screen flex items-center justify-center">
+      <ol id="just-children">
+        <li data-template data-if-boy>{{name}} is a boy!</li>
+        <li data-template>{{name}} is a girl</li>
+      </ol>
+
+      <ol id="list">
+        <li data-template>
+          {{parent}}
+          <ul>
+            <li data-template-for="join.children" data-if-boy>{{name}} is a boy</li>
+            <li data-template-for="join.children">{{name}} is a girl</li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+  </body>
+
+</html>

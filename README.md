@@ -1,2 +1,8 @@
 # CMSList
-A Collection of CMS currently on the market
+Compilation of Content Management Systems (CMS)
+
+
+- Open source
+- Propriety
+- Headless
+
